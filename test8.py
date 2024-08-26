@@ -34,7 +34,7 @@ class QRCodeScannerApp:
         self.button_frame.pack(pady=20, anchor=tk.CENTER)
 
          # YOLO Model Files
-        self.yolo_net = cv2.dnn.readNet("yolov4.cfg", "yolov4.weights")
+        self.yolo_net = cv2.dnn.readNet("yolov4-tiny.weights", "yolov4-tiny.cfg")
         self.classes = []
         with open("coco.names", "r") as f:
             self.classes = f.read().strip().split("\n")
@@ -103,8 +103,8 @@ class QRCodeScannerApp:
 
         ret, frame = self.cap.read()
         if ret:
-            # YOLO object detection
-            blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
+            # YOLOv4-tiny object detection
+            blob = cv2.dnn.blobFromImage(frame, 0.00392, (256, 256), (0, 0, 0), True, crop=False)
             self.yolo_net.setInput(blob)
             outs = self.yolo_net.forward(self.output_layers)
 
@@ -144,15 +144,13 @@ class QRCodeScannerApp:
                 print(f"QR Code Data: {data}")
 
                 # Retrieve video from library
-                video_library_path = '/path/to/video/library/'
+                video_library_path = r'data\video'
                 video_path = os.path.join(video_library_path, data)
                 if os.path.exists(video_path):
                     print(f"Playing video: {video_path}")
                     self.play_video(video_path)
                 else:
                     print("Video not found.")
-
-           
 
             # Show image in GUI
             cv2_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -161,7 +159,9 @@ class QRCodeScannerApp:
             self.video_label.config(image=tk_image)
             self.video_label.image = tk_image
 
+        # Call scan again after 10 ms
         self.root.after(10, self.scan)
+
 
     def stop_scanning(self):
         self.running = False
@@ -189,7 +189,7 @@ class QRCodeScannerApp:
             qr.add_data(video_path)
             qr.make(fit=True)
             img = qr.make_image(fill_color=self.qr_color, back_color="white")
-            img_path = os.path.join('/path/to/save/qr/codes/', f"{os.path.basename(video_path)}.png")
+            img_path = os.path.join(r'data\save', f"{os.path.basename(video_path)}.png")
             img.save(img_path)
 
             pil_img = Image.open(img_path)
@@ -202,7 +202,7 @@ class QRCodeScannerApp:
             qr.add_data(url)
             qr.make(fit=True)
             img = qr.make_image(fill_color=self.qr_color, back_color="white")
-            img_path = os.path.join('/path/to/save/qr/codes/', "url_qr_code.png")
+            img_path = os.path.join(r'data\save', "url_qr_code.png")
             img.save(img_path)
 
             pil_img = Image.open(img_path)
@@ -217,7 +217,7 @@ class QRCodeScannerApp:
         qr.add_data(vcard_data)
         qr.make(fit=True)
         img = qr.make_image(fill_color=self.qr_color, back_color="white")
-        img_path = os.path.join('/path/to/save/qr/codes/', "vcard_qr_code.png")
+        img_path = os.path.join(r'data\save', "vcard_qr_code.png")
         img.save(img_path)
 
         pil_img = Image.open(img_path)
@@ -230,7 +230,7 @@ class QRCodeScannerApp:
             qr.add_data(text)
             qr.make(fit=True)
             img = qr.make_image(fill_color=self.qr_color, back_color="white")
-            img_path = os.path.join('/path/to/save/qr/codes/', "text_qr_code.png")
+            img_path = os.path.join(r'data\save', "text_qr_code.png")
             img.save(img_path)
 
             pil_img = Image.open(img_path)
