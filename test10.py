@@ -15,10 +15,11 @@ import webbrowser
 class QRCodeScannerApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("QR Code Scanner")
+        self.root.title("AI & QR Code Scanner by Mr.Patchara Al-umaree : 6651630177 ")
         self.root.geometry("1000x700")
         self.root.minsize(800, 600)
         self.root.configure(bg="#2E2E2E")  # Dark background
+        self.root.iconphoto(False, PhotoImage(file=r'data\pic\icon.png'))  # Set the app icon
 
         # Create the menu bar
         menubar = tk.Menu(self.root)
@@ -27,7 +28,7 @@ class QRCodeScannerApp:
         # Add "Contact Developer" menu
         developer_menu = tk.Menu(menubar, tearoff=0)
         developer_menu.add_command(label="Contact Developer", command=self.show_developer_info)
-        menubar.add_cascade(label="Help", menu=developer_menu)
+        menubar.add_cascade(label="Help!", menu=developer_menu)
 
         # Create main frame
         self.main_frame = Frame(root, bg="#2E2E2E")
@@ -93,12 +94,16 @@ class QRCodeScannerApp:
         developer_window = Toplevel(self.root)
         developer_window.title("Developer Information")
         developer_window.geometry("250x350")  # Set a smaller size for the window
+        developer_window.configure(bg="#2E2E2E")  # Dark background
 
         # Developer information
-        dev_name = "Your Name"
-        dev_email = "your.email@example.com"
-        dev_github = "https://github.com/yourprofile"
+        dev_name = "Patchara Al-umaree"
+        dev_email = "Patcharaalumaree@gmail.com"
+        dev_student_id = "6651630177"
+        dev_github = "https://github.com/MrPatchara"  
         dev_photo_path = r'data\pic\pic.png'  # Replace with the path to your photo
+        developer_window.iconphoto(False, PhotoImage(file=dev_photo_path))# Set the developer photo as the window icon
+
 
         # Display developer photo
         photo = PhotoImage(file=dev_photo_path)
@@ -106,21 +111,39 @@ class QRCodeScannerApp:
         photo_label = Label(developer_window, image=photo)
         photo_label.image = photo  # Keep a reference to the image to prevent garbage collection
         photo_label.pack(pady=10)
+        photo_label.config(bg="#2E2E2E")  # Set background color
 
         # Display developer name
         name_label = Label(developer_window, text=f"Name: {dev_name}", font=("Arial", 10))
         name_label.pack(pady=5)
+        name_label.config(bg="#2E2E2E", fg="white")  # Set background and text color
+
+        # Display student ID
+        student_id_label = Label(developer_window, text=f"Student ID: {dev_student_id}", font=("Arial", 10))
+        student_id_label.pack(pady=5)
+        student_id_label.config(bg="#2E2E2E", fg="white")  # Set background and text color
 
         # Display developer email
         email_label = Label(developer_window, text=f"Email: {dev_email}", font=("Arial", 10))
         email_label.pack(pady=5)
+        email_label.config(bg="#2E2E2E", fg="white")  # Set background and text color
 
         # Display developer GitHub
-        github_label = Label(developer_window, text=f"GitHub: {dev_github}", font=("Arial", 10), fg="blue", cursor="hand2")
+        github_label = Label(developer_window, text=f"GitHub: {dev_github}", font=("Arial", 10), fg="green", cursor="hand2")
         github_label.pack(pady=5)
+        github_label.config(bg="#2E2E2E")  # Set background color
 
         # Open GitHub link on click
         github_label.bind("<Button-1>", lambda e: webbrowser.open(dev_github))
+
+        # Display grade photo
+        grade_photo_path = r'data\pic\mygrade.png'  # Replace with the path to your photo
+        grade_photo = PhotoImage(file=grade_photo_path)
+        grade_photo = grade_photo.subsample(6, 6)  # Resize the image (subsample reduces the size)
+        grade_photo_label = Label(developer_window, image=grade_photo)
+        grade_photo_label.image = grade_photo
+        grade_photo_label.pack(pady=10) # Add some space between the labels
+        grade_photo_label.config(bg="#2E2E2E")  # Set background color
 
     def play_video(self, video_path):
         system_name = platform.system()
