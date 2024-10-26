@@ -1,0 +1,16 @@
+### 	Installation ###
+
+ลง Version ตามที่ต้องการ
+V1 หรือ V2 
+
+หากพบปัญหา error ให้ทําการติดตั้ง Visual c++ 2013 ก่อน
+vcredist_x64.exe
+vcredist_x86
+
+
+Thank you!
+
+### My Contact ###
+NAME:   Patchara Al-umaree
+EMAIL:  Patcharaalumaree@gmail.com
+GITHUB: https://github.com/MrPatchara

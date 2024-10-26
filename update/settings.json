@@ -1,0 +1,52 @@
+{
+    "example_text_1": 
+    {
+        "file_type": "image",
+        "path": "data/images/example_image_1.jpg"
+    },
+    
+    "example_text_2": {
+        "file_type": "video",
+        "path": "data/videos/example_video_2.avi"
+    },
+
+    "example_text_3": {
+        "file_type": "image",
+        "path": "data/images/example_image_3.png"
+    },
+
+    "example_text_4": {
+        "file_type": "video",
+        "path": "data/videos/example_video_4.avi"
+    },
+
+    "example_text_5": {
+        "file_type": "image",
+        "path": "data/images/example_image_5.png"
+    },
+
+    "example_text_6": {
+        "file_type": "video",
+        "path": "data/videos/example_video_6.avi"
+    },
+
+    "example_text_7": {
+        "file_type": "image",
+        "path": "data/images/example_image_7.png"
+    },
+
+    "example_text_8": {
+        "file_type": "video",
+        "path": "data/videos/example_video_8.avi"
+    },
+
+    "example_text_9": {
+        "file_type": "image",
+        "path": "data/images/example_image_9.png"
+    },
+
+    "example_text_10": {
+        "file_type": "video",
+        "path": "data/videos/example_video_10.avi"
+    }
+}

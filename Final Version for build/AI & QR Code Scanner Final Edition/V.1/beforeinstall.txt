@@ -1,0 +1,4 @@
+### WELCOME TO AI & QR Code Scanner INSTALLER ###
+
+This program is made by : OPENCV,PYTHON,YOLO4 AI
+
